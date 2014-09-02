@@ -13,7 +13,7 @@ def main():
 	# 算法要求，计算出A里面'plane'到达'd'（终点）的均值和方差
 	A = {'plane':{0:{'1':10,'d':20},50:{'2':70,'d':80}}}
 	mean = mean_calculation(A)
-	variance = mean_calculation(A)
+	variance = variance_calculation(A)
 	print mean,variance
 	pass
 if __name__ == '__main__':

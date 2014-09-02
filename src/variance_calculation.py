@@ -4,22 +4,24 @@
 
 
 def variance_calculation(input):
-	var = 0
+	var = {}
+	sum_all = {}
+	mean_all = {}
+
+	for plane in input:
+		temp_sum = 0.0
 		num = 0
-	sum = 0.0
-	mean = 0
+		for start_time in input[plane]:
+			temp_sum = temp_sum + input[plane][start_time]['d'] - start_time
+			num = num + 1
+		mean_all[plane] = temp_sum/num
 
 	for plane in input:
+		temp_sum = 0.0
+		num = 0
 		for start_time in input[plane]:
-			sum = sum + input[plane][start_time]['d'] - start_time
-			num = num +1
+			temp_sum = temp_sum + (input[plane][start_time]['d'] - start_time - mean_all[plane])**2
+			num = num + 1
+		var[plane] = temp_sum/num
 
-	mean = sum/num
-	sum = 0
-
-	for plane in input:
-		for start_time in input[plane]:
-			sum = sum + (input[plane][start_time]['d'] - start_time - mean)**2
-
-	var = sum/num
 	return var
