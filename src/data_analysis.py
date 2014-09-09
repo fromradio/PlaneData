@@ -1,8 +1,10 @@
 # coding=utf-8
 ## 由静远完成
 # 具体要求见 'data_analysis.py' 添加所需要的库
+from file_analysis import *
 from mean_calculation import *
 from variance_calculation import *
+from data_transform import *
 # input 格式
 # 例如
 # A={'CES5186':{201305262206:{'DOGAR':201305262329,'ZBAA':201305262343}}}
@@ -11,10 +13,14 @@ from variance_calculation import *
 
 def main():
 	# 算法要求，计算出A里面'plane'到达'd'（终点）的均值和方差
-	A = {'plane':{0:{'1':10,'d':20},50:{'2':70,'d':80}}}
-	mean = mean_calculation(A)
-	variance = variance_calculation(A)
-	print mean,variance
+	# A = {'plane':{0:{'1':10,'d':20},50:{'2':70,'d':80}}}
+	# read the plane list
+	planelist = file_analysis('../Resource/ZSPD-ZBAA.xlsx')
+	A = planelist[0]
+	print pointTimeList(A,'CES5186','ZBAA')
+	# mean = mean_calculation(A)
+	# variance = variance_calculation(A)
+	# print mean,variance
 	pass
 if __name__ == '__main__':
 	main()
